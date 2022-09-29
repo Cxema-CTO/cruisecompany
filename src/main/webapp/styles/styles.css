@@ -1,0 +1,238 @@
+html, body, section {
+    height: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0;
+    font-family: roboto, sans-serif;
+    background: #ababab;
+    /*overflow: hidden;*/
+    /*font-size: 14px;*/
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    background-color: #f3f3f3;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.inCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 320px;
+    padding: 25px;
+    margin: 32px;
+    /*background-color: rgba(255, 255, 255, 0);*/
+    color: white;
+    text-shadow: 0 0 4px darkgray, 0 0 16px darkgray;
+    background-color: lightgray;
+    border-radius: 8px;
+}
+
+button {
+    background-color: #263b5d;
+    border: 2px solid #263b5d;
+    padding: 12px 20px;
+    width: 100%;
+    margin: 8px 0;
+    color: white;
+    cursor: pointer;
+    font-weight: bolder;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff8c00;
+    border: 2px solid #ff8c00;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.buttonError:hover {
+    background-color: white;
+    border: 2px solid white;
+    color: #263b5d;
+    transition: all 0.3s ease;
+}
+
+input[type=text], input[type=password], textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 144px;
+}
+
+
+input[type=checkbox] {
+    margin-top: 8px;
+}
+
+input[type=checkbox]:checked {
+    accent-color: #263b5d;
+}
+
+input[type=radio]:checked {
+    accent-color: #263b5d;
+}
+
+#loginFormLabel {
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.errorModal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff8c00;
+    color: white;
+    padding: 16px 32px;
+    min-width: 320px;
+    min-height: 160px;
+}
+
+.hideModal {
+    visibility: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(40, 40, 40, 0.2);
+    z-index: 100000;
+    transition: all 0s ease;
+    backdrop-filter: blur(5px);
+}
+
+
+.userTop {
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.userIcon {
+    height: 18px;
+    padding: 2px;
+    margin-left: 32px;
+}
+
+.userName {
+    padding: 8px;
+}
+
+#userTopCloseButton {
+    width: 32px;
+    /*height: 32px;p*/
+    margin-left: 4px;
+    padding: 2px;
+}
+
+#userTopCloseButton:hover {
+    content: url("../assets/exitHover.png");
+}
+
+.viewPassword {
+    background-image: url("../assets/view.png");
+    height: 16px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+
+.workspace {
+    background: gainsboro;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 8px;
+    padding-bottom: 36px;
+}
+
+.left_sidebar {
+    background: lightgray;
+    width: 180px;
+    min-width: 180px;
+    padding: 8px;
+}
+
+.content {
+    padding: 8px;
+    width: auto;
+    margin: 0 auto;
+}
+
+#paginationButtonView {
+    display: flex;
+    justify-content: center;
+}
+
+#paginationButtonBefore, #paginationButtonNext {
+    margin: 12px;
+    padding: 0;
+    display: inline-block;
+    width: 72px;
+    height: 24px;
+}
+
+/*table*/
+table {
+    border: 1px solid #263b5d;
+}
+
+th, td {
+    min-width: 76px;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #04AA6D;
+    color: white;
+}
+
+th:hover {
+    cursor: all-scroll;
+}
+
+tr {
+    background-color: #f1f1f1;
+}
+
+tr:nth-child(even) {
+    background-color: #e3e3e3;
+}
+
+tr:hover {
+    background-color: coral;
+    cursor: pointer;
+    color: white;
+}
+
+/*end table*/
