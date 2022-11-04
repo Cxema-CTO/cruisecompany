@@ -9,14 +9,12 @@
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
 
-
 <title><fmt:message key="title.cruise_company"/></title>
 
-
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon"/>
-
 <div class="header">
-    <a href="${pageContext.request.contextPath}/index.jsp"><h1><fmt:message key="title.cruise_company"/></h1>
+    <img id="logoCruiseCompany" src="${pageContext.request.contextPath}/assets/boat.png" alt="logo">
+
+    <a href="${pageContext.request.contextPath}/controller?open=INDEX"><h1><fmt:message key="title.cruise_company"/></h1>
     </a>
     <div>
         <div class="langButton" id="langButtonUA">
@@ -28,10 +26,7 @@
     </div>
 </div>
 
-
-<%----%>
-<%----%>
-<%----%>
+<div class="headerLimp"></div>
 <%----%>
 
 
@@ -45,6 +40,20 @@
         background: url("${pageContext.request.contextPath}/assets/backgroundSmall.png");
         color: white;
         text-align: center;
+    }
+
+    .headerLimp{
+        position: fixed;
+        z-index: -10000;
+        background-color: #f3f3f3;
+        width: 100vw;
+        max-width: 1280px;
+        height: 100vh;
+    }
+
+    #logoCruiseCompany {
+        width: 52px;
+        height: 52px;
     }
 
     .langButton {

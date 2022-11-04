@@ -2,9 +2,6 @@
 
 Завданням фінального проекту є розробка веб-додатку, який підтримує функціональність
 відповідно до завдання
-варіант.
-
-Варіанти
 
 Круїзна компанія Компанія має декілька круїзних лайнерів.
 Судно має власну пасажиромісткість, маршрут,
@@ -23,9 +20,6 @@ PROJECT DESCRIPTION
 
 The task of the final project is to develop a web application that supports the
 functionality according to the task
-variant.
-
-Variants
 
 Cruise company The company has several cruise ships.
 The ship has its own passenger capacity, route,

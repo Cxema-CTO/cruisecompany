@@ -1,0 +1,11 @@
+SELECT *
+FROM table_name
+WHERE
+condition=true
+ORDER BY
+table.field ASK | DESK
+LIMIT offset, rowsCount
+
+Майстерність програміста не в тому, щоб писати програми, котрі працюють без помилок, а в тому, щоб писати програми, котрі працюють при будь-якій кількості помилок.
+
+

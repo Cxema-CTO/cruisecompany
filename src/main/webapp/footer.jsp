@@ -2,9 +2,13 @@
 
 
 <style>
+    .limp {
+        height: 32px;
+    }
+
     .footer {
-        width:100%;
-        max-width: 1024px;
+        width: 100%;
+        max-width: 1280px;
         margin-top: 12px;
         display: inline-flex;
         align-items: center;
@@ -24,6 +28,8 @@
 
 </style>
 
+<div class="limp"></div>
 <div class="footer">
     <div id="webmaster">Admin (login: admin, password: admin) Users (password: pass) ©webmaster</div>
+
 </div>
