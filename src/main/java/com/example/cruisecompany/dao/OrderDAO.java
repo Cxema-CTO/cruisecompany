@@ -17,11 +17,25 @@ public class OrderDAO {
     private static final String HOW_ORDERS = "SELECT COUNT(*) FROM orders";
     private static final String GET_ONE_BY_ORDER_ID = "SELECT * FROM orders WHERE id = ?";
     private static final String CREATE_NEW_ORDER = "INSERT INTO orders (client_id, cruise_id, paid, confirmed) VALUES (?,?,?,?)";
-
+    private static final String UPDATE_ORDER_CONFIRMED = "UPDATE orders SET confirmed = ? WHERE id = ?";
 
     private static final ConnectionPool connectionPool = ConnectionPool.getInstance();
     private static Connection connection;
 
+
+
+    public static void updateOrderConfirmedInDB(int orderId, Boolean isConfirmed) {
+            connection = connectionPool.getConnection();
+            try (PreparedStatement ps = connection.prepareStatement(UPDATE_ORDER_CONFIRMED)) {
+                ps.setBoolean(1, isConfirmed);
+                ps.setInt(2, orderId);
+                ps.executeUpdate();
+            } catch (SQLException exception) {
+                LOGGER.error(exception);
+            } finally {
+                connectionPool.releaseConnection(connection);
+            }
+    }
 
     public static void createNewOrderInDB(int clientId, int cruiseId, boolean paid, boolean confirmed) {
         connection = connectionPool.getConnection();

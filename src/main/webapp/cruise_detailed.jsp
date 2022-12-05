@@ -38,7 +38,7 @@
                 <fmt:message key="from"/> ${cruiseDetailed.startCruise} <fmt:message key="to"/> ${cruiseDetailed.endCruise}
             </div>
             <div>
-                <fmt:message key="cruise.price"/>: ${cruiseDetailed.price}
+                <fmt:message key="cruise.price"/>: ₿${cruiseDetailed.price}
             </div>
         </div>
         <br>

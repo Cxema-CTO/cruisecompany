@@ -1,5 +1,6 @@
 package com.example.cruisecompany.controller;
 
+import java.sql.Date;
 import java.util.Objects;
 
 public class Pagination {
@@ -9,6 +10,16 @@ public class Pagination {
     public static int offset;
     public static String oldURL;
     public static String orderBy = "id";
+
+    public static String filter = "off";
+
+    public static final Date FIRST_DAY = new Date(246927600L);
+    public static final Date LAST_DAY = new Date(3402684000L);
+    public static Date from = FIRST_DAY;
+    public static Date to = LAST_DAY;
+    public static int durationMin = 0;
+    public static int durationMax = Integer.MAX_VALUE;
+
     static String orderByOLd = new StringBuilder().append(orderBy).toString();
     public static String orderByDirection = "ASC";
 

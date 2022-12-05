@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class pageIndex implements OpenPage {
     List<CruiseForSale> sendCruisesForSale = new ArrayList<>();
@@ -28,7 +29,9 @@ public class pageIndex implements OpenPage {
             req.getSession().setAttribute("totalPages", Pagination.totalPages(howCruisesForSaleInDB));
         } else {
             req.getSession().setAttribute("pagination", "no");
+            Pagination.offset = 0;
         }
+
 
         sendCruisesForSale.clear();
         sendCruisesForSale.addAll(CruiseForSaleDAO.paginationCruiseForSale(Pagination.orderBy, Pagination.orderByDirection, Pagination.limit, Pagination.offset));
@@ -37,7 +40,7 @@ public class pageIndex implements OpenPage {
         req.getSession().setAttribute("cruisesForSaleCount", CruiseForSaleDAO.howMuchIsTheCruisesForSale());
 
         String role = (String) req.getSession().getAttribute("role");
-        if (role != null) {
+        if (Objects.equals(role, "admin") || Objects.equals(role, "user")) {
             User userFromSession = (User) req.getSession().getAttribute("user");
             User userForIndex = UserDAO.getUserFromDB(userFromSession.getUserName());
             req.getSession().setAttribute("user", userForIndex);

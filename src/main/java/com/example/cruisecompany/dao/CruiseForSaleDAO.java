@@ -1,6 +1,7 @@
 package com.example.cruisecompany.dao;
 
 import com.example.cruisecompany.connectionpool.ConnectionPool;
+import com.example.cruisecompany.controller.Pagination;
 import com.example.cruisecompany.entity.CruiseForSale;
 import org.apache.log4j.Logger;
 
@@ -14,32 +15,56 @@ import java.util.Objects;
 
 public class CruiseForSaleDAO {
     private static final Logger LOGGER = Logger.getLogger(CruiseForSaleDAO.class);
-    private static final String HOW_CRUISES_FOR_SALE = "SELECT COUNT(*) FROM cruises INNER JOIN ships  on ships.id = cruises.ship_id";
-
+    private static final String HOW_CRUISES_FOR_SALE = "SELECT COUNT(*) FROM cruises INNER JOIN ships on ships.id = cruises.ship_id";
+    private static String patternForPaginationFilter;
     private static final ConnectionPool connectionPool = ConnectionPool.getInstance();
     private static Connection connection;
 
 
     public static int howMuchIsTheCruisesForSale() {
         int answer = 0;
+        patternForPaginationFilter = " WHERE start_date > '" + Pagination.from + "' AND end_date < '" + Pagination.to + "' AND duration BETWEEN " + Pagination.durationMin + " AND " + Pagination.durationMax;
+
         connection = connectionPool.getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(HOW_CRUISES_FOR_SALE)) {
-            ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            answer = resultSet.getInt("count");
-        } catch (SQLException exception) {
-            LOGGER.error(exception, exception);
-        } finally {
-            connectionPool.releaseConnection(connection);
+        if (Objects.equals(Pagination.filter, "on")) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(HOW_CRUISES_FOR_SALE + patternForPaginationFilter)) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                answer = resultSet.getInt("count");
+            } catch (SQLException exception) {
+                LOGGER.error(exception);
+            } finally {
+                connectionPool.releaseConnection(connection);
+            }
         }
+
+        if (Objects.equals(Pagination.filter, "off")) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(HOW_CRUISES_FOR_SALE)) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                answer = resultSet.getInt("count");
+            } catch (SQLException exception) {
+                LOGGER.error(exception, exception);
+            } finally {
+                connectionPool.releaseConnection(connection);
+            }
+        }
+
+
         return answer;
     }
 
     public static List<CruiseForSale> paginationCruiseForSale(String orderColumn, String direction, int limitRows, int offsetRows) {
         List<CruiseForSale> cruiseListForSale = new ArrayList<>();
         connection = connectionPool.getConnection();
+        patternForPaginationFilter = " WHERE start_date > '" + Pagination.from + "' AND end_date < '" + Pagination.to + "' AND duration BETWEEN " + Pagination.durationMin + " AND " + Pagination.durationMax;
+
         if (Objects.equals(orderColumn, "id")) orderColumn = "cruises.id";// бікоз використовуєм INNER JOIN
         String PAGINATION_CRUISES = "SELECT * FROM cruises INNER JOIN ships  on ships.id = cruises.ship_id ORDER BY " + orderColumn + " " + direction + " LIMIT " + limitRows + " OFFSET " + offsetRows;
+
+        if (Pagination.filter == "on")
+            PAGINATION_CRUISES = "SELECT * FROM cruises INNER JOIN ships  on ships.id = cruises.ship_id " + patternForPaginationFilter + " ORDER BY " + orderColumn + " " + direction + " LIMIT " + limitRows + " OFFSET " + offsetRows;
+
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(PAGINATION_CRUISES)) {
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -48,7 +73,7 @@ public class CruiseForSaleDAO {
                 cruiseListForSale.add(cruiseForSale);
             }
         } catch (SQLException exception) {
-            LOGGER.error(exception, exception);
+            LOGGER.error(exception);
         } finally {
             connectionPool.releaseConnection(connection);
         }
@@ -68,6 +93,9 @@ public class CruiseForSaleDAO {
         cruise.setRoute(resultSet.getString("route"));
         cruise.setPhotoLink(resultSet.getString("photo"));
         cruise.setPrice(resultSet.getInt("price"));
+        int cabinsOnShip = resultSet.getInt("cabins");
+        int cabinsSold = resultSet.getInt("cabins_sold");
+        cruise.setCabinsLeft(cabinsOnShip - cabinsSold);
         return cruise;
     }
 }

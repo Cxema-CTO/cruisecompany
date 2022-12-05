@@ -34,6 +34,7 @@
         <th onclick="orderBy('is_admin')"><fmt:message key="role"/></th>
         <th onclick="orderBy('is_banned')"><fmt:message key="status"/></th>
         <th onclick="orderBy('balance')"><fmt:message key="balance"/></th>
+        <th><fmt:message key="add.photo"/></th>
     </tr>
     <c:forEach items="${users}" var="i">
         <tr class="rows" onclick="getIDfromTable(${i.id})">
@@ -62,7 +63,13 @@
                     ₿${i.accountBalance}
                 </div>
             </td>
+            <td>
+                <div class="inCenter"><img src="show?id=${i.id}" class="inCenter imgPassportPhoto"
+                                           onerror="this.onerror = null; this.src = '${pageContext.request.contextPath}/assets/noPhoto.png'">
+                </div>
+            </td>
         </tr>
+
     </c:forEach>
 </table>
 

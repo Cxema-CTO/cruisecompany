@@ -1,4 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="mtg" uri="myTag" %>
+
+
+<div class="limp"></div>
+<div class="footer">
+    <div id="webmaster"><mtg:myTag/></div>
+</div>
 
 
 <style>
@@ -28,8 +35,3 @@
 
 </style>
 
-<div class="limp"></div>
-<div class="footer">
-    <div id="webmaster">Admin (login: admin, password: admin) Users (password: pass) ©webmaster</div>
-
-</div>

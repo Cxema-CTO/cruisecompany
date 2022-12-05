@@ -14,7 +14,16 @@ public class CruiseForSale {
     private String route;
     private String photoLink;
     private int price;
+    private int cabinsLeft;
 
+
+    public int getCabinsLeft() {
+        return cabinsLeft;
+    }
+
+    public void setCabinsLeft(int cabinsLeft) {
+        this.cabinsLeft = cabinsLeft;
+    }
 
     public int getId() {
         return id;

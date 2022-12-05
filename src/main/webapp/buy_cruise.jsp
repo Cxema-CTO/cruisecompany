@@ -29,7 +29,7 @@
     <div class="container containerWidth480">
         <div id="loginFormLabel">
             <%--        <fmt:message key="title.login"/></div>--%>
-            <h3>Вітаємо з покупкою круїзу!!!</h3></div>
+            <h3><fmt:message key="congratulations.cruise.buy"/></h3></div>
         <div class="inCenter">
             <button class="buttonSmall"
                     onclick="location.href='${pageContext.request.contextPath}/controller?open=INDEX'"

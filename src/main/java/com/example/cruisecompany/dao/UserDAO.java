@@ -161,7 +161,7 @@ public class UserDAO {
                 ps.setString(1, userName);
                 ps.executeUpdate();
             } catch (SQLException exception) {
-                LOGGER.error(exception, exception);
+                LOGGER.error(exception);
             } finally {
                 connectionPool.releaseConnection(connection);
             }
@@ -177,7 +177,7 @@ public class UserDAO {
             ps.setBoolean(3, isAdmin);
             ps.executeUpdate();
         } else {
-            System.out.println("Can't create, user with this username exists, choose another username");
+            LOGGER.error("Can't create, user with this username exists, choose another username");
         }
     }
 

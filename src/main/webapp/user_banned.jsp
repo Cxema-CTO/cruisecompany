@@ -25,15 +25,10 @@
     <div class="container">
         <h2><fmt:message key="banned.message"/></h2>
         <br>
-        <div class="inCenter"><img class="errorImage" width="128px" src="assets/banned.gif" alt="banned gif">
+        <div class="inCenter"><img class="errorImage" width="164px" src="assets/banStamp.png" alt="banned gif">
         </div>
     </div>
 </div>
 </body>
-
-
-<footer>
-    <jsp:include page="footer.jsp"/>
-</footer>
 
 </html>

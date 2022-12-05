@@ -28,13 +28,14 @@
 
 <h3 class="margin8px"><fmt:message key="orders"/>: ${ordersCount}</h3>
 
-<table id="tableShips">
+<div class="inCenter">
+<table id="tableShips" class="containerWidth480">
     <tr id="tableHeader">
         <th onclick="orderBy('id')"><fmt:message key="id"/></th>
-        <th onclick="orderBy('clientId')"><fmt:message key="client.id"/></th>
-        <th onclick="orderBy('cruiseId')"><fmt:message key="cruise.id"/></th>
-        <th onclick="orderBy('isPaid')"><fmt:message key="paid"/></th>
-        <th onclick="orderBy('isConfirmed')"><fmt:message key="confirmed"/></th
+        <th onclick="orderBy('client_id')"><fmt:message key="client.id"/></th>
+        <th onclick="orderBy('cruise_id')"><fmt:message key="cruise.id"/></th>
+        <th onclick="orderBy('paid')"><fmt:message key="paid"/></th>
+        <th onclick="orderBy('confirmed')"><fmt:message key="confirmed"/></th
     </tr>
     <c:forEach items="${orders}" var="i">
         <tr class="rows" onclick="getIDfromTable(${i.id})">
@@ -48,14 +49,32 @@
                 </c:choose>
             </td>
             <td>
-                <c:choose>
-                    <c:when test="${i.confirmed == true}"><fmt:message key="yes"/></c:when>
-                    <c:when test="${i.confirmed == false}"><fmt:message key="no"/></c:when>
-                </c:choose>
+                <div class="inCenter">
+                    <c:choose>
+                        <c:when test="${i.confirmed == true}"><fmt:message key="yes"/></c:when>
+                        <c:when test="${i.confirmed == false}"><fmt:message key="no"/></c:when>
+                    </c:choose>
+                </div>
+                <c:if test="${sessionScope.role == 'admin'}">
+                    <form action="${pageContext.request.contextPath}/controller?open=CONFIRM_CRUISE" method="post"
+                          accept-charset="UTF-8">
+                        <input type="hidden" value="${i.id}" name="orderId">
+                        <button class="tableButton inCenter" type="submit">
+                            <c:choose>
+                            <c:when test="${i.confirmed == true}">
+                                <fmt:message key="reject"/>
+                            </c:when>
+                            <c:when test="${i.confirmed == false}">
+                                <fmt:message key="confirm"/>
+                            </c:when>
+                            </c:choose>
+                    </form>
+                </c:if>
             </td>
         </tr>
     </c:forEach>
 </table>
+</div>
 
 <c:if test="${pagination=='yes'}">
     <div id="paginationButtonView">

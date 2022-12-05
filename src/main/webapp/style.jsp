@@ -41,11 +41,13 @@
         .spaceBetween {
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .spaceAround {
             display: flex;
             justify-content: space-around;
+            align-items: center;
         }
 
         .textAlignCenter {
@@ -75,16 +77,21 @@
             border-radius: 8px;
         }
 
+        /*.adminPanel {*/
+        /*    width: 320px;*/
+        /*    padding: 4px;*/
+        /*    margin: 4px;*/
+        /*    color: white;*/
+        /*    text-shadow: 0 0 4px darkgray, 0 0 16px darkgray;*/
+        /*    !*background-color: lightgray;*!*/
+        /*    background-color: #cacaca;*/
+        /*    border-radius: 8px;*/
+        /*}*/
+
         .adminPanel {
-            width: 320px;
-            padding: 4px;
-            margin: 4px;
-            color: white;
-            text-shadow: 0 0 4px darkgray, 0 0 16px darkgray;
-            /*background-color: lightgray;*/
-            background-color: #cacaca;
-            border-radius: 8px;
+            background-color: #e6e6e6;
         }
+
 
         .width100percent {
             width: 100%;
@@ -243,6 +250,7 @@
             background-color: white;
             padding: 8px;
             border-radius: 8px;
+            margin: 12px;
         }
 
         .hideModal {
@@ -293,7 +301,6 @@
         }
 
         #userTopCartButton {
-            width: 28px;
             height: 28px;
             margin-left: 6px;
         }
@@ -304,6 +311,18 @@
 
         #userTopLoginButton:hover {
             content: url("${pageContext.request.contextPath}/assets/loginHover.png");
+        }
+
+        .filterIcon {
+            height: 24px;
+            padding: 8px;
+            margin-right: 8px;
+        }
+
+        .filterIcon:hover {
+            cursor: pointer;
+            box-shadow: inset 0 0 18px 0 rgba(223, 223, 223, 1);
+            border-radius: 8px;
         }
 
         .viewPassword {
@@ -350,7 +369,7 @@
         table {
             /*table-layout: fixed;*/
             width: 100%;
-            /*border: 1px solid #263b5d;*/
+            border: 2px solid #e3e3e3;
         }
 
         th, td {
@@ -405,7 +424,16 @@
             max-width: 640px;
             object-fit: cover;
             object-position: center;
+            border-radius: 8px;
         }
+
+
+        .imgPassportPhoto {
+            max-height: 48px;
+            max-width: 48px;
+            padding: 4px
+        }
+
     </style>
 </head>
 </html>

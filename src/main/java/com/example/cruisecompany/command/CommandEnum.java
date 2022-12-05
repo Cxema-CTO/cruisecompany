@@ -21,6 +21,7 @@ public enum CommandEnum {
     BUY_CRUISE(new pageBuyCruise()),
     CART(new pageCart()),
     CRUISE_DETAILED(new pageCruiseInCartDetailed()),
+    CONFIRM_CRUISE(new actionConfirmCruise()),
     ERROR_404(new pageError404());
 
 

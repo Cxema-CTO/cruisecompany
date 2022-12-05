@@ -18,6 +18,7 @@
 
 
 <body>
+
 <c:if test="${sessionScope.role == 'guest' || sessionScope.role == null}">
     <jsp:include page="guest.jsp"/>
     <jsp:include page="cruises_for_sale.jsp"/>
@@ -36,8 +37,6 @@
 <c:if test="${sessionScope.role == 'banned'}">
     <jsp:include page="user_banned.jsp"/>
 </c:if>
-
-
 
 
 </body>
@@ -63,6 +62,53 @@
         }
     }
 
+
+    // filter
+    function openCruiseFilterModal() {
+        let bannedModal = document.getElementById("cruiseFilterModal")
+        bannedModal.style.visibility = "visible"
+    }
+
+    function closeCruiseFilterModal() {
+        let bannedModal = document.getElementById("cruiseFilterModal")
+        bannedModal.style.visibility = "hidden"
+    }
+
+    function setCruiseFilterModal(onOff) {
+        let from = document.getElementById("dateFrom").value
+        let to = document.getElementById("dateTo").value
+        let duration = document.getElementById("duration").value
+
+        if (onOff === "on") {
+            if (from === "") from = ("1977-10-29")
+            if (to === "") to = ("2077-10-29")
+            if (duration == null) duration = 0
+            xhr.open("POST", "PAGINATION?filter=on&from=" + from + "&to=" + to + "&duration=" + duration, true);
+            xhr.send();
+        }
+        if (onOff === "off") {
+            from = ("1977-10-29")
+            to = ("2077-10-29")
+            duration = 0
+            xhr.open("POST", "PAGINATION?filter=on&from=" + from + "&to=" + to + "&duration=" + duration, true);
+            xhr.send();
+        }
+    }
+
+    function date() {
+        let from = document.getElementById("dateFrom").value
+        let to = document.getElementById("dateTo").value
+        if (from !== "" && to !== "") {
+            if (from.valueOf() > to.valueOf()) {
+                document.getElementById("dateFrom").style.backgroundColor = "red"
+                document.getElementById("dateTo").style.backgroundColor = "red"
+            } else {
+                document.getElementById("dateFrom").style.backgroundColor = "white"
+                document.getElementById("dateTo").style.backgroundColor = "white"
+            }
+        }
+    }
+
     // pagination
     function beforeButtonClick() {
         xhr.open("POST", "PAGINATION?click=before", true);
@@ -83,7 +129,7 @@
         console.log(id)
     }
 
-    function buyCruise(id){
-        console.log("buy cruise Id:"+id)
+    function buyCruise(id) {
+        console.log("buy cruise Id:" + id)
     }
 </script>

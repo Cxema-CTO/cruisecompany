@@ -14,7 +14,7 @@
         <img id="userTopCloseButton" src="assets/exit.png" alt="exit"></a>
 </div>
 
-<div class="inCenter">
+<div class="adminPanel inCenter">
     <div class="spaceBetween">
         <button class="buttonAdminPanel"
                 onclick="location.href='${pageContext.request.contextPath}/controller?open=ORDERS'"
