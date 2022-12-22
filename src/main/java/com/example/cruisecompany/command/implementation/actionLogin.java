@@ -21,7 +21,6 @@ public class actionLogin implements OpenPage {
             if (Objects.equals(user.getUserName(), userName) && Objects.equals(user.getPassword(), EncodePassword.getHashPassword(password))) {
                 request.getSession().setAttribute("user", user);
 
-
                 if (user.isBanned()) {
                     request.getSession().setAttribute("role", "banned");
                 } else {
