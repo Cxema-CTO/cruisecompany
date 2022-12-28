@@ -47,11 +47,17 @@ public class Pagination {
         }
     }
 
+    /**
+     * Method pageBefore()
+     */
     public static void pageBefore() {
         currentPage--;
         if (currentPage < 1) currentPage = 1;
     }
 
+    /**
+     * Method pageNext()
+     */
     public static void pageNext() {
         currentPage++;
         if (currentPage > totalPages) currentPage = totalPages;

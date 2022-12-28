@@ -8,7 +8,7 @@ class EncodePasswordTest {
 
     @Test
     void getHashPassword() {
-        String testHash = "098f6bcd4621d373cade4e832627b4f6";
+        String testHash = "098f6bcd4621d373cade4e832627b4f6";// MD5 "test"
         String getHash = EncodePassword.getHashPassword("test");
         assertEquals(getHash,testHash);
     }

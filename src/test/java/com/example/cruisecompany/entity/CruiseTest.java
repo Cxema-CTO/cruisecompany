@@ -26,7 +26,6 @@ class CruiseTest {
 
     @Test
     void getId() {
-//        cruise.setId(1);
         int id = cruise.getId();
         assertEquals(1, id);
     }
@@ -54,7 +53,6 @@ class CruiseTest {
 
     @Test
     void getCabinsSold() {
-//        cruise.setCabinsSold(30);
         int id = cruise.getCabinsSold();
         assertEquals(30, id);
     }
@@ -69,7 +67,6 @@ class CruiseTest {
 
     @Test
     void getStartCruise() {
-//        cruise.setStartCruise(new Date(246927600L));
         Date expDate = new Date(246927600L);
         Date date = (Date) cruise.getStartCruise();
         assertEquals(expDate, date);
@@ -86,7 +83,6 @@ class CruiseTest {
 
     @Test
     void getEndCruise() {
-//        cruise.setEndCruise(new Date(3402684000L));
         Date expDate = new Date(3402684000L);
         Date date = (Date) cruise.getEndCruise();
         assertEquals(expDate, date);
@@ -102,7 +98,6 @@ class CruiseTest {
 
     @Test
     void getDuration() {
-//        cruise.setDuration(5);
         int id = cruise.getDuration();
         assertEquals(5, id);
     }
@@ -116,7 +111,6 @@ class CruiseTest {
 
     @Test
     void getRoute() {
-//        cruise.setRoute("Milano Paris");
         String route = cruise.getRoute();
         assertEquals("Milano Paris", route);
     }
@@ -131,7 +125,6 @@ class CruiseTest {
 
     @Test
     void getCruisePrice() {
-//        cruise.setCruisePrice(100);
         int id = cruise.getCruisePrice();
         assertEquals(100, id);
     }

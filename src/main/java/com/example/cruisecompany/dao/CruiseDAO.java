@@ -24,20 +24,19 @@ public class CruiseDAO {
     private static Connection connection;
 
 
-
-
     public static void setCabinsSoldInDB(int cruiseId, int howMuch) {
-            connection = connectionPool.getConnection();
-            try (PreparedStatement ps = connection.prepareStatement(UPDATE_CABINS_SOLD)) {
-                ps.setInt(1, howMuch);
-                ps.setInt(2, cruiseId);
-                ps.executeUpdate();
-            } catch (SQLException exception) {
-                LOGGER.error(exception, exception);
-            } finally {
-                connectionPool.releaseConnection(connection);
-            }
+        connection = connectionPool.getConnection();
+        try (PreparedStatement ps = connection.prepareStatement(UPDATE_CABINS_SOLD)) {
+            ps.setInt(1, howMuch);
+            ps.setInt(2, cruiseId);
+            ps.executeUpdate();
+        } catch (SQLException exception) {
+            LOGGER.error(exception, exception);
+        } finally {
+            connectionPool.releaseConnection(connection);
+        }
     }
+
     public static List<Cruise> paginationCruise(String orderColumn, String direction, int limitRows, int offsetRows) {
         List<Cruise> cruiseList = new ArrayList<>();
         connection = connectionPool.getConnection();

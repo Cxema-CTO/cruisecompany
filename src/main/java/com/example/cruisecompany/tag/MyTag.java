@@ -12,7 +12,9 @@ public class MyTag extends TagSupport {
     private static final Logger LOGGER = Logger.getLogger(MyTag.class);
     String myTagString;
 
-
+    /**
+     * Generate MyTag
+     */
     @Override
     public int doStartTag() {
         myTagString = makeMyTag();

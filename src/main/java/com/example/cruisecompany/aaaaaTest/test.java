@@ -21,9 +21,8 @@ public class test {
 //        System.out.println(date.getTime());
 //        System.out.println(date);
 //        System.out.println(date.before(dateTwo));
-
-        String basePath = new File("").getAbsolutePath();
-        System.out.println(basePath);//////////////
+//        String basePath = new File("").getAbsolutePath();
+//        System.out.println(basePath);//////////////
 
     }
 }

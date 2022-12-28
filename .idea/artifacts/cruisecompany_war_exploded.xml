@@ -14,10 +14,10 @@
           <element id="module-output" name="cruisecompany" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.5.0" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.5.1" />
           <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
-          <element id="library" level="project" name="Maven: org.jetbrains:annotations:23.0.0" />
+          <element id="library" level="project" name="Maven: org.jetbrains:annotations:23.1.0" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
         </element>
       </element>
