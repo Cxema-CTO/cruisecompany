@@ -138,7 +138,6 @@ class CruiseTest {
 
     @Test
     void testToString() {
-        System.out.println(cruise);
         String expCruise = "Cruise{id=1, shipId=2, cabinsSold=30, startCruise=1970-01-03, endCruise=1970-02-09, duration=5, route='Milano Paris', cruisePrice=100}";
         String actCruise = cruise.toString();
         assertEquals(expCruise, actCruise);

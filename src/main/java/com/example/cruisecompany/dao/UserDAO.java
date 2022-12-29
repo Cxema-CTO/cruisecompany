@@ -15,7 +15,7 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class UserDAO {
+public class UserDAO{
     private static final Logger LOGGER = Logger.getLogger(UserDAO.class);
     private static final String GET_ALL_USERS = "SELECT * FROM users";
     private static final String HOW_USERS = "SELECT COUNT(*) FROM users";
@@ -30,7 +30,6 @@ public class UserDAO {
 
     private static final ConnectionPool connectionPool = ConnectionPool.getInstance();
     private static Connection connection;
-
 
     public static int howMuchIsTheFish() {
         int answer = 0;
@@ -103,7 +102,7 @@ public class UserDAO {
                     connectionPool.releaseConnection(connection);
                 }
             } else {
-                System.out.println("Username is already taken, choose another username");
+                LOGGER.error("Username is already taken, choose another username");
             }
         }
     }
