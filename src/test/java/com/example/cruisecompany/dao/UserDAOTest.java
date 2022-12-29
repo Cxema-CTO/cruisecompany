@@ -14,9 +14,9 @@ class UserDAOTest {
     void howMuchIsTheFish() {
         try (MockedStatic<UserDAO> dao = mockStatic(UserDAO.class)) {
             dao.when(UserDAO::howMuchIsTheFish).thenReturn(222);
-            int users = UserDAO.howMuchIsTheFish();
-            System.out.println(users);
-            assertEquals(222, users);
+            int usersQuantity = UserDAO.howMuchIsTheFish();
+            System.out.println(usersQuantity);
+            assertEquals(222, usersQuantity);
         }
     }
 
@@ -24,9 +24,9 @@ class UserDAOTest {
     void howMuchIsTheFishWithoutTry() {
         MockedStatic<UserDAO> dao = mockStatic(UserDAO.class);
         dao.when(UserDAO::howMuchIsTheFish).thenReturn(777);
-        int users = UserDAO.howMuchIsTheFish();
-        System.out.println(users);
-        assertEquals(777, users);
+        int usersQuantity = UserDAO.howMuchIsTheFish();
+        System.out.println(usersQuantity);
+        assertEquals(777, usersQuantity);
     }
 
 
