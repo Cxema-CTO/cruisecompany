@@ -33,9 +33,9 @@ public class ImageShowController extends HttpServlet {
     private void getImage(HttpServletResponse response, String hashName) throws IOException {
         File directory = new File("");
         String link = directory.getAbsolutePath() + File.separator + "Images" + File.separator + hashName;
-        Path imageFile = Paths.get(link);
+        Path imageFilePath = Paths.get(link);
         try (OutputStream out = response.getOutputStream()) {
-            Files.copy(imageFile, out);
+            Files.copy(imageFilePath, out);
         } catch (Exception exception) {
             LOGGER.error(exception);
         }
